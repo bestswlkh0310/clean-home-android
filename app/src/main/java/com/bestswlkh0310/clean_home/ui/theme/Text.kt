@@ -47,7 +47,7 @@ fun Body(
 fun Label(
     modifier: Modifier = Modifier,
     text: String,
-    color: Color = Color.Gray500
+    color: Color = Color.Black
 ) {
     Text(
         modifier = modifier,

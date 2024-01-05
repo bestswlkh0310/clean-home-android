@@ -2,6 +2,7 @@ package com.bestswlkh0310.clean_home.ui.home
 
 import android.util.Log
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -31,7 +32,9 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.bestswlkh0310.clean_home.model.ItemModel
 import com.bestswlkh0310.clean_home.service.HttpClient.itemApi
+import com.bestswlkh0310.clean_home.ui.home.component.ItemCeil
 import com.bestswlkh0310.clean_home.ui.root.NavGroup
+import com.bestswlkh0310.clean_home.ui.theme.shadow1
 import com.bestswlkh0310.clean_home.util.TAG
 import kotlinx.coroutines.launch
 
@@ -83,9 +86,13 @@ fun HomeView(
             }
         }
 
-        LazyColumn {
-            items(items) {
-                Text(text = it.itemName)
+        LazyColumn(
+            modifier = Modifier
+                .padding(horizontal = 8.dp),
+            verticalArrangement = Arrangement.spacedBy(4.dp)
+        ) {
+            items(items, key = { it.id }) {
+                ItemCeil(item = it)
             }
         }
     }
