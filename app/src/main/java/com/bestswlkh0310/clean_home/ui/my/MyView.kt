@@ -1,5 +1,6 @@
 package com.bestswlkh0310.clean_home.ui.my
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -17,11 +18,15 @@ import androidx.compose.material3.TopAppBarColors
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.bestswlkh0310.clean_home.service.HttpClient.userApi
+import com.bestswlkh0310.clean_home.util.TAG
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -29,8 +34,14 @@ fun MyView(
     navController: NavController
 ) {
 
-    LaunchedEffect(Unit) {
+    val coroutine = rememberCoroutineScope()
 
+    LaunchedEffect(Unit) {
+        coroutine.launch {
+            val user = userApi.getUser()
+            Log.d(TAG, "$user - MyView() called")
+
+        }
     }
 
     Scaffold(
