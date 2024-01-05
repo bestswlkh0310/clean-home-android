@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.bestswlkh0310.clean_home.ui.home.HomeView
 import com.bestswlkh0310.clean_home.ui.my.MyView
+import com.bestswlkh0310.clean_home.ui.myfix.MyFix
 
 @Composable
 fun NavigationGraph(
@@ -20,6 +21,9 @@ fun NavigationGraph(
         }
         composable(NavGroup.Home.id) {
             HomeView(navController = navController)
+        }
+        composable(NavGroup.MyFix.id) {
+            MyFix(navController = navController)
         }
     }
 }
