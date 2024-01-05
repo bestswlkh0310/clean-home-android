@@ -107,7 +107,7 @@ fun MyView(
                         key = "이름",
                         value = user.name
                     ) {
-
+                        navController.navigate(NavGroup.MyFix.id)
                     }
                 }
 
