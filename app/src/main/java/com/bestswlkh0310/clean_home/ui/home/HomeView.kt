@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -34,6 +35,7 @@ import com.bestswlkh0310.clean_home.model.ItemModel
 import com.bestswlkh0310.clean_home.service.HttpClient.itemApi
 import com.bestswlkh0310.clean_home.ui.home.component.ItemCeil
 import com.bestswlkh0310.clean_home.ui.root.NavGroup
+import com.bestswlkh0310.clean_home.ui.theme.Title
 import com.bestswlkh0310.clean_home.ui.theme.shadow1
 import com.bestswlkh0310.clean_home.util.TAG
 import kotlinx.coroutines.launch
@@ -68,15 +70,15 @@ fun HomeView(
     ) {
         Row(
             modifier = Modifier
+                .padding(vertical = 8.dp)
+                .padding(start = 8.dp)
                 .background(Color.White),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(
+            Title(
                 modifier = Modifier
                     .padding(start = 12.dp),
                 text = "청소하고 돈 받기",
-                fontSize = 24.sp,
-                fontWeight = FontWeight.Bold
             )
             Spacer(modifier = Modifier.weight(1f))
             IconButton(onClick = {
@@ -88,11 +90,15 @@ fun HomeView(
 
         LazyColumn(
             modifier = Modifier
-                .padding(horizontal = 8.dp),
-            verticalArrangement = Arrangement.spacedBy(4.dp)
         ) {
             items(items, key = { it.id }) {
-                ItemCeil(item = it)
+                ItemCeil(
+                    modifier = Modifier,
+                    item = it
+                )
+            }
+            item {
+                Spacer(modifier = Modifier.height(100.dp))
             }
         }
     }

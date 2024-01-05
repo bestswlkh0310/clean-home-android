@@ -13,10 +13,11 @@ import androidx.compose.ui.unit.dp
 fun Modifier.shadow1() =
     this
         .shadow(
-            color = Color.Black.copy(alpha = 0.04f),
+            color = Color.Black,
             cornerRadius = 8.dp,
             shadowRadius = 20.dp,
-            offsetY = 2.dp
+            offsetY = 2.dp,
+            alpha = 0.05f
         )
 
 fun Modifier.shadow(

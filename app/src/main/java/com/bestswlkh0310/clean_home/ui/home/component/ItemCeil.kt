@@ -21,6 +21,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.bestswlkh0310.clean_home.model.ItemModel
 import com.bestswlkh0310.clean_home.ui.theme.Body
+import com.bestswlkh0310.clean_home.ui.theme.Label
 import com.bestswlkh0310.clean_home.ui.theme.shadow1
 
 @Composable
@@ -31,17 +32,25 @@ fun ItemCeil(
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .background(Color.White)
+            .padding(horizontal = 8.dp)
+            .padding(top = 8.dp)
+            .shadow1()
             .clip(RoundedCornerShape(8.dp))
-            .shadow1(),
+            .background(Color.White),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Body(
+        Column(
             modifier = Modifier
-                .padding(start = 8.dp),
-            text = item.itemName
-        )
+                .padding(start = 8.dp)
+        ) {
+            Body(
+                modifier = Modifier,
+                text = item.itemName
+            )
+
+            Label(text = item.createdAt, color = Color.LightGray)
+        }
 
         Button(
             onClick = {
@@ -49,8 +58,7 @@ fun ItemCeil(
             }
         ) {
             Text(
-                modifier = Modifier
-                    .padding(start = 8.dp),
+                modifier = Modifier,
                 text = "완료"
             )
         }

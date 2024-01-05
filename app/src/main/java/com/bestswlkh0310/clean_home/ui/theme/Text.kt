@@ -18,7 +18,7 @@ fun Title(
         modifier = modifier,
         text = text,
         style = TextStyle(
-            fontWeight = FontWeight.Black,
+            fontWeight = FontWeight.SemiBold,
             fontSize = 24.sp
         ),
         color = color
@@ -35,7 +35,7 @@ fun Body(
         modifier = modifier,
         text = text,
         style = TextStyle(
-            fontWeight = FontWeight.Bold,
+            fontWeight = FontWeight.SemiBold,
             fontSize = 18.sp
         ),
         color = color
@@ -53,7 +53,7 @@ fun Label(
         modifier = modifier,
         text = text,
         style = TextStyle(
-            fontWeight = FontWeight.Bold,
+            fontWeight = FontWeight.SemiBold,
             fontSize = 14.sp
         ),
         color = color
