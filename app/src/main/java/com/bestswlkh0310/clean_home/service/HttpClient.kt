@@ -1,6 +1,7 @@
 package com.bestswlkh0310.clean_home.service
 
 import android.util.Log
+import com.bestswlkh0310.clean_home.service.api.UserApi
 import com.bestswlkh0310.clean_home.util.Json.isJsonArray
 import com.bestswlkh0310.clean_home.util.Json.isJsonObject
 import com.google.gson.Gson
@@ -75,5 +76,5 @@ object HttpClient {
         .client(okHttpClient)
         .build()
 
-//    val api: Api by lazy { retrofit.create(Api::class.java) }
+    val userApi by lazy { retrofit.create(UserApi::class.java) }
 }
