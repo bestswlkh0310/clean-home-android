@@ -53,16 +53,20 @@ fun MyFix(
             modifier = Modifier
                 .fillMaxSize()
                 .background(Color.White)
-                .padding(innerPadding),
+                .padding(innerPadding)
+                .padding(horizontal = 12.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-
             Column(
                 modifier = Modifier
                     .padding(top = 24.dp),
                 horizontalAlignment = Alignment.Start
             ) {
-                Body(text = "이름")
+                Body(
+                    modifier = Modifier
+                        .padding(bottom = 4.dp),
+                    text = "이름"
+                )
                 CHTextField(
                     modifier = Modifier
                         .fillMaxWidth(),
@@ -71,7 +75,11 @@ fun MyFix(
                 )
             }
 
-            CHButton(text = "수정 완료") {
+            CHButton(
+                modifier = Modifier
+                    .padding(top = 24.dp),
+                text = "수정 완료"
+            ) {
                 coroutine.launch {
                     userApi.fixName(userModel = UserModel(
                         id = CleanHomeApplication.prefs.id,
