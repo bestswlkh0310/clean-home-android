@@ -2,7 +2,6 @@ package com.bestswlkh0310.clean_home.application
 
 import android.app.Application
 import android.content.Context
-import android.preference.PreferenceManager
 
 
 class CleanHomeApplication : Application() {

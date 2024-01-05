@@ -2,6 +2,7 @@ package com.bestswlkh0310.clean_home.service
 
 import android.annotation.SuppressLint
 import android.util.Log
+import com.bestswlkh0310.clean_home.application.CleanHomeApplication
 import com.bestswlkh0310.clean_home.service.api.ItemApi
 import com.bestswlkh0310.clean_home.service.api.UserApi
 import com.bestswlkh0310.clean_home.util.Json.isJsonArray
@@ -55,6 +56,15 @@ object HttpClient {
 
             okHttpClientBuilder.sslSocketFactory(sslSocketFactory, trustAllCerts[0] as X509TrustManager)
             okHttpClientBuilder.hostnameVerifier { hostname, session -> true }
+
+
+            okHttpClientBuilder.addInterceptor { chain ->
+                val original = chain.request()
+                val requestBuilder = original.newBuilder()
+                    .header("Authorization", "Bearer ${CleanHomeApplication.prefs.id}") // Replace YOUR_ACCESS_TOKEN with your actual access token
+                val request = requestBuilder.build()
+                chain.proceed(request)
+            }
 
             return okHttpClientBuilder.build()
         }
