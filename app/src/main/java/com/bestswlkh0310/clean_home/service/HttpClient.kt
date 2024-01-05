@@ -70,7 +70,7 @@ object HttpClient {
         }
 
     val retrofit = Retrofit.Builder()
-        .baseUrl("http://172.30.1.85:3000/")
+        .baseUrl("http://clean-home-hhhello0507.koyeb.app/")
         .addConverterFactory(GsonConverterFactory.create(gson))
         .client(okHttpClient)
         .build()

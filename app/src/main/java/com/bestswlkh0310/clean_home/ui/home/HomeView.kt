@@ -71,7 +71,11 @@ fun HomeView(
                 isRefreshing = true
                 delay(500)
                 isRefreshing = false
-                items = itemApi.getAll()
+                try {
+                    items = itemApi.getAll()
+                } catch (e: Exception) {
+
+                }
             }
         }
     )
@@ -156,9 +160,13 @@ fun HomeView(
                         item = it
                     ) {
                         coroutine.launch {
-                            val response = itemApi.complete(it)
-                            items = response
-                            Toast.makeText(context, "${it.cost}원 획득!", Toast.LENGTH_SHORT).show()
+                            try {
+                                val response = itemApi.complete(it)
+                                items = response
+                                Toast.makeText(context, "${it.cost}원 획득!", Toast.LENGTH_SHORT).show()
+                            } catch (e: Exception) {
+
+                            }
                         }
                     }
                 }

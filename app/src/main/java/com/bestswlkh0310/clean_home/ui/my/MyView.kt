@@ -68,9 +68,13 @@ fun MyView(
 
     LaunchedEffect(Unit) {
         coroutine.launch {
-            val response = userApi.getUser()
-            Log.d(TAG, "$response - MyView() called")
-            user = response
+            try {
+                val response = userApi.getUser()
+                Log.d(TAG, "$response - MyView() called")
+                user = response
+            } catch (e: Exception) {
+
+            }
         }
     }
 
@@ -120,7 +124,9 @@ fun MyView(
                         .fillMaxWidth()
                         .padding(16.dp)
                         .clickable {
-                            Toast.makeText(context, "받고 싶으면 나한테 오세요", Toast.LENGTH_SHORT).show()
+                            Toast
+                                .makeText(context, "받고 싶으면 나한테 오세요", Toast.LENGTH_SHORT)
+                                .show()
                         }
                         .shadow1()
                         .clip(RoundedCornerShape(8.dp))

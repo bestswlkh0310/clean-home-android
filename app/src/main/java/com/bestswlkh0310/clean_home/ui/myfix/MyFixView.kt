@@ -38,7 +38,11 @@ fun MyFix(
 
     LaunchedEffect(Unit) {
         coroutine.launch {
-            name = userApi.getUser().name
+            try {
+                name = userApi.getUser().name
+            } catch (e: Exception) {
+
+            }
         }
     }
 
@@ -82,11 +86,16 @@ fun MyFix(
                 text = "수정 완료"
             ) {
                 coroutine.launch {
-                    userApi.fixName(userModel = UserModel(
-                        id = CleanHomeApplication.prefs.id,
-                        name = name
-                    ))
-                    navController.popBackStack()
+
+                    try {
+                        userApi.fixName(userModel = UserModel(
+                            id = CleanHomeApplication.prefs.id,
+                            name = name
+                        ))
+                        navController.popBackStack()
+                    } catch (e: Exception) {
+
+                    }
                 }
             }
         }
