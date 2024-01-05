@@ -43,7 +43,9 @@ import androidx.navigation.NavController
 import com.bestswlkh0310.clean_home.model.UserModel
 import com.bestswlkh0310.clean_home.service.HttpClient.userApi
 import com.bestswlkh0310.clean_home.ui.my.component.InfoCeil
+import com.bestswlkh0310.clean_home.ui.root.NavGroup
 import com.bestswlkh0310.clean_home.ui.theme.Body
+import com.bestswlkh0310.clean_home.ui.theme.CHTopBar
 import com.bestswlkh0310.clean_home.ui.theme.Label
 import com.bestswlkh0310.clean_home.ui.theme.Title
 import com.bestswlkh0310.clean_home.ui.theme.shadow1
@@ -69,32 +71,9 @@ fun MyView(
 
     Scaffold(
         topBar = {
-            TopAppBar(
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color.White,
-                    titleContentColor = Color.Black
-                ),
-                title = {
-                    Text(
-                        text = "MY",
-                        fontSize = 24.sp,
-                        fontWeight = FontWeight.Bold
-                    )
-                },
-                navigationIcon = {
-                    IconButton(
-                        onClick = {
-                            navController.popBackStack()
-                        }
-                    ) {
-                        Icon(
-                            imageVector = Icons.Filled.ArrowBack,
-                            contentDescription = "Localized description",
-                            tint = Color.Black
-                        )
-                    }
-                }
-            )
+            CHTopBar(title = NavGroup.My.title) {
+                navController.popBackStack()
+            }
         }
     ) { innerPadding ->
         Column(
@@ -109,7 +88,6 @@ fun MyView(
             } else {
 
                 val user = user!!
-
                 Row(
                     modifier = Modifier
                         .padding(horizontal = 12.dp),

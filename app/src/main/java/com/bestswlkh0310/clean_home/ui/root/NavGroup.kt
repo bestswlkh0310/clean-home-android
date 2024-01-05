@@ -6,4 +6,5 @@ sealed class NavGroup(
 ) {
     object Home: NavGroup("HOME", "홈")
     object My: NavGroup("MY", "MY")
+    object MyFix: NavGroup("MY_FIX", "프로필 수정")
 }
