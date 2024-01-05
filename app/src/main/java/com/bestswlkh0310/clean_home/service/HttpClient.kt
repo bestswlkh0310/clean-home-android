@@ -8,6 +8,7 @@ import com.bestswlkh0310.clean_home.service.api.UserApi
 import com.bestswlkh0310.clean_home.util.Json.isJsonArray
 import com.bestswlkh0310.clean_home.util.Json.isJsonObject
 import com.bestswlkh0310.clean_home.util.TAG
+import com.bestswlkh0310.clean_home.util.isDebug
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
@@ -70,7 +71,7 @@ object HttpClient {
         }
 
     val retrofit = Retrofit.Builder()
-        .baseUrl("http://clean-home-hhhello0507.koyeb.app/")
+        .baseUrl(if (!isDebug) "http://clean-home-hhhello0507.koyeb.app/" else "http://172.30.1.85:3000")
         .addConverterFactory(GsonConverterFactory.create(gson))
         .client(okHttpClient)
         .build()
