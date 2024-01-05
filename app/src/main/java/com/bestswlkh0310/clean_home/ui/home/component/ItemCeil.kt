@@ -24,6 +24,7 @@ import com.bestswlkh0310.clean_home.ui.theme.shadow1
 fun ItemCeil(
     modifier: Modifier = Modifier,
     item: ItemModel,
+    callback: () -> Unit
 ) {
     Row(
         modifier = modifier
@@ -52,10 +53,10 @@ fun ItemCeil(
         CHButton(
             modifier = Modifier
                 .padding(end = 8.dp),
-            text = "완료",
+            text = "${item.cost}원",
             type = ButtonType.Sub
         ) {
-
+            callback()
         }
     }
 }
