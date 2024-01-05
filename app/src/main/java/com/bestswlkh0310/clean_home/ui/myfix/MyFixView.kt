@@ -64,7 +64,8 @@ fun MyFix(
             ) {
                 Body(
                     modifier = Modifier
-                        .padding(bottom = 4.dp),
+                        .padding(bottom = 4.dp)
+                        .padding(start = 4.dp),
                     text = "이름"
                 )
                 CHTextField(
