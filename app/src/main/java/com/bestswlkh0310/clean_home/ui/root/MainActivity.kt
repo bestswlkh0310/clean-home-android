@@ -14,12 +14,15 @@ import androidx.navigation.compose.rememberNavController
 import com.bestswlkh0310.clean_home.application.CleanHomeApplication
 import com.bestswlkh0310.clean_home.application.PreferenceManager
 import com.bestswlkh0310.clean_home.ui.theme.CleanhomeTheme
+import java.util.UUID
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            CleanHomeApplication.prefs = PreferenceManager(applicationContext)
+
+            handlePrefs()
+            handleUUID()
 
             val navController = rememberNavController()
 
@@ -31,6 +34,16 @@ class MainActivity : ComponentActivity() {
                     NavigationGraph(navController = navController)
                 }
             }
+        }
+    }
+
+    fun handlePrefs() {
+        CleanHomeApplication.prefs = PreferenceManager(applicationContext)
+    }
+
+    fun handleUUID() {
+        if (CleanHomeApplication.prefs.id.isEmpty()) {
+            CleanHomeApplication.prefs.id = UUID.randomUUID().toString()
         }
     }
 }

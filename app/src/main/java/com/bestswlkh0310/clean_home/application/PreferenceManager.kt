@@ -8,7 +8,7 @@ class PreferenceManager(context: Context) {
     private val prefs: SharedPreferences =
         context.getSharedPreferences(CLEAN_HOME_APP, Context.MODE_PRIVATE)
 
-    var id: String by PreferenceDelegate(ID, UUID.randomUUID().toString())
+    var id: String by PreferenceDelegate(ID, "")
 
 
     fun deleteAllToken() {
