@@ -53,7 +53,6 @@ fun HomeView(
 
     LaunchedEffect(Unit) {
         coroutine.launch {
-            // TODO : get items api
             try {
                 val response = itemApi.getAll()
                 Log.d(TAG, "${response[0]} - HomeView() called")
@@ -100,7 +99,12 @@ fun HomeView(
                 ItemCeil(
                     modifier = Modifier,
                     item = it
-                )
+                ) {
+                    coroutine.launch {
+                        val response = itemApi.complete(it)
+                        items = response
+                    }
+                }
             }
             item {
                 Spacer(modifier = Modifier.height(100.dp))
