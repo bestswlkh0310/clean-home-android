@@ -1,9 +1,12 @@
 package com.bestswlkh0310.clean_home.service
 
+import android.annotation.SuppressLint
 import android.util.Log
+import com.bestswlkh0310.clean_home.service.api.ItemApi
 import com.bestswlkh0310.clean_home.service.api.UserApi
 import com.bestswlkh0310.clean_home.util.Json.isJsonArray
 import com.bestswlkh0310.clean_home.util.Json.isJsonObject
+import com.bestswlkh0310.clean_home.util.TAG
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
@@ -18,6 +21,7 @@ import javax.net.ssl.SSLContext
 import javax.net.ssl.TrustManager
 import javax.net.ssl.X509TrustManager
 
+@SuppressLint("TrustAllX509TrustManager")
 object HttpClient {
 
 
@@ -25,23 +29,7 @@ object HttpClient {
 
     // loginInterceptor
     private val logInterceptor = HttpLoggingInterceptor { message ->
-        Log.i("로그", "Retrofit-Client : $message")
-
-        when {
-            message.isJsonObject() ->
-                Log.i("로그", JSONObject(message).toString(4))
-
-            message.isJsonArray() ->
-                Log.i("로그", JSONObject(message).toString(4))
-
-            else -> {
-                try {
-                    Log.i("로그", JSONObject(message).toString(4))
-                } catch (e: Exception) {
-                    Log.i("로그", message)
-                }
-            }
-        }
+        Log.i(TAG, "Retrofit-Client : $message")
     }.setLevel(HttpLoggingInterceptor.Level.BODY)
 
 
@@ -53,7 +41,8 @@ object HttpClient {
             okHttpClientBuilder.readTimeout(3, TimeUnit.SECONDS)
             okHttpClientBuilder.writeTimeout(3, TimeUnit.SECONDS)
             okHttpClientBuilder.addInterceptor(logInterceptor)
-            val trustAllCerts = arrayOf<TrustManager>(object : X509TrustManager {
+            val trustAllCerts = arrayOf<TrustManager>(@SuppressLint("CustomX509TrustManager")
+            object : X509TrustManager {
                 override fun checkClientTrusted(chain: Array<out X509Certificate>?, authType: String?) {}
                 override fun checkServerTrusted(chain: Array<out X509Certificate>?, authType: String?) {}
                 override fun getAcceptedIssuers(): Array<X509Certificate> { return arrayOf() }
@@ -71,10 +60,11 @@ object HttpClient {
         }
 
     val retrofit = Retrofit.Builder()
-        .baseUrl("http://localhost:3000/")
+        .baseUrl("http://172.30.1.85:3000/")
         .addConverterFactory(GsonConverterFactory.create(gson))
         .client(okHttpClient)
         .build()
 
     val userApi by lazy { retrofit.create(UserApi::class.java) }
+    val itemApi by lazy { retrofit.create(ItemApi::class.java) }
 }

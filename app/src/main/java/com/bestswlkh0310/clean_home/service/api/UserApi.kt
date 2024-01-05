@@ -7,10 +7,10 @@ import retrofit2.http.POST
 
 interface UserApi {
 
-    @POST("/join")
-    fun join(userModel: UserModel): MessageModel
+//    @POST("/join")
+//    fun join(userModel: UserModel): MessageModel
 
     @PATCH("/name")
-    fun fixName(userModel: UserModel): UserModel
+    suspend fun fixName(userModel: UserModel): UserModel
 
 }
