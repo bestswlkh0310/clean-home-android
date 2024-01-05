@@ -158,6 +158,7 @@ fun HomeView(
                         coroutine.launch {
                             val response = itemApi.complete(it)
                             items = response
+                            Toast.makeText(context, "${it.cost}원 획득!", Toast.LENGTH_SHORT).show()
                         }
                     }
                 }
