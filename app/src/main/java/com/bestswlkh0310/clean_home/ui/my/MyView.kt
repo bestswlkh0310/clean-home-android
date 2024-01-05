@@ -1,7 +1,9 @@
 package com.bestswlkh0310.clean_home.ui.my
 
 import android.util.Log
+import android.widget.Toast
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -11,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowForward
@@ -36,6 +39,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -60,6 +64,7 @@ fun MyView(
 
     val coroutine = rememberCoroutineScope()
     var user by remember { mutableStateOf<UserModel?>(null) }
+    val context = LocalContext.current
 
     LaunchedEffect(Unit) {
         coroutine.launch {
@@ -86,7 +91,6 @@ fun MyView(
             if (user == null) {
                 Text(text = "...로딩중")
             } else {
-
                 val user = user!!
                 Row(
                     modifier = Modifier
@@ -115,7 +119,11 @@ fun MyView(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(16.dp)
+                        .clickable {
+                            Toast.makeText(context, "받고 싶으면 나한테 오세요", Toast.LENGTH_SHORT).show()
+                        }
                         .shadow1()
+                        .clip(RoundedCornerShape(8.dp))
                         .background(Color.White)
                         .padding(16.dp),
                 ) {
