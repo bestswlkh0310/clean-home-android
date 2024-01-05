@@ -48,7 +48,7 @@ fun CHButton(
     type: ButtonType = ButtonType.Main,
     shape: Shape = RoundedCornerShape(50),
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-    contentPadding: PaddingValues = PaddingValues(vertical = 4.dp, horizontal = 8.dp),
+    contentPadding: PaddingValues = PaddingValues(vertical = 4.dp, horizontal = 12.dp),
     onClick: () -> Unit,
 ) {
 
