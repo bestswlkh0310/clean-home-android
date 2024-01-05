@@ -82,7 +82,8 @@ fun MyView(
                     ) {
                         Icon(
                             imageVector = Icons.Filled.ArrowBack,
-                            contentDescription = "Localized description"
+                            contentDescription = "Localized description",
+                            tint = Color.Black
                         )
                     }
                 }
@@ -102,20 +103,26 @@ fun MyView(
 
                 val user = user!!
 
-                Row {
+                Row(
+                    modifier = Modifier
+                        .padding(horizontal = 12.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
                     Box(
                         modifier = Modifier
-                            .size(80.dp)
+                            .size(72.dp)
                             .clip(CircleShape)
                             .background(Color.LightGray)
                     )
 
-                    Row(
+                    InfoCeil(
                         modifier = Modifier
-                            .weight(1f),
-                        horizontalArrangement = Arrangement.SpaceBetween
+                            .weight(1f)
+                            .padding(start = 8.dp),
+                        key = "이름",
+                        value = user.name
                     ) {
-                        InfoCeil(key = "이름", value = user.name)
+
                     }
                 }
 
@@ -125,36 +132,6 @@ fun MyView(
                 ) {
 
                 }
-
-
-//
-//                Row {
-//                    Text(
-//                        modifier = Modifier
-//                            .padding(horizontal = 8.dp),
-//                        text = "이름",
-//                        fontSize = 18.sp,
-//                        fontWeight = FontWeight.Bold
-//                    )
-//                    Text(text = user!!.name)
-//                }
-//
-//                Button(onClick = {
-//
-//                }) {
-//                    Text(text = "이름 수정")
-//                }
-//
-//                Row {
-//                    Text(
-//                        modifier = Modifier
-//                            .padding(horizontal = 8.dp),
-//                        text = "잔액",
-//                        fontSize = 18.sp,
-//                        fontWeight = FontWeight.Bold
-//                    )
-//                    Text(text = "${user!!.cost}원")
-//                }
             }
         }
     }

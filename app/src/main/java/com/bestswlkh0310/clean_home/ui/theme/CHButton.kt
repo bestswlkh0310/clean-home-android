@@ -35,7 +35,7 @@ sealed class ButtonType(
 
     data object None: ButtonType(
         backgroundColor = CHColor.gray50,
-        foregroundColor = Color.Black,
+        foregroundColor = Color.Gray,
         strokeColor = Color.Transparent
     )
 }
@@ -51,6 +51,13 @@ fun CHButton(
     contentPadding: PaddingValues = PaddingValues(vertical = 4.dp, horizontal = 8.dp),
     onClick: () -> Unit,
 ) {
+
+    val shape = if (type == ButtonType.None) {
+        RoundedCornerShape(8.dp)
+    } else {
+        shape
+    }
+
     Button(
         modifier = modifier
             .shadow1(),
