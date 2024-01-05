@@ -35,6 +35,7 @@ import com.bestswlkh0310.clean_home.model.ItemModel
 import com.bestswlkh0310.clean_home.service.HttpClient.itemApi
 import com.bestswlkh0310.clean_home.ui.home.component.ItemCeil
 import com.bestswlkh0310.clean_home.ui.root.NavGroup
+import com.bestswlkh0310.clean_home.ui.theme.CHColor
 import com.bestswlkh0310.clean_home.ui.theme.Title
 import com.bestswlkh0310.clean_home.ui.theme.shadow1
 import com.bestswlkh0310.clean_home.util.TAG
@@ -84,7 +85,11 @@ fun HomeView(
             IconButton(onClick = {
                 navController.navigate(NavGroup.My.id)
             }) {
-                Icon(imageVector = Icons.Default.AccountCircle, contentDescription = null)
+                Icon(
+                    imageVector = Icons.Default.AccountCircle,
+                    contentDescription = null,
+                    tint = CHColor.gray50
+                )
             }
         }
 
