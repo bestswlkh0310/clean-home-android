@@ -70,7 +70,7 @@ object HttpClient {
         }
 
     val retrofit = Retrofit.Builder()
-        .baseUrl("serverUrl")
+        .baseUrl("http://localhost:3000/")
         .addConverterFactory(GsonConverterFactory.create(gson))
         .client(okHttpClient)
         .build()

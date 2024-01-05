@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.bestswlkh0310.clean_home.ui.home.HomeView
 import com.bestswlkh0310.clean_home.ui.my.MyView
 
 @Composable
@@ -18,7 +19,7 @@ fun NavigationGraph(
             MyView(navController = navController)
         }
         composable(NavGroup.Home.id) {
-
+            HomeView(navController = navController)
         }
     }
 }
