@@ -50,6 +50,8 @@ android {
 }
 
 dependencies {
+    implementation ("androidx.compose.material:material:1.5.4")
+
     // navigation
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
     implementation("androidx.navigation:navigation-compose:2.5.3")
