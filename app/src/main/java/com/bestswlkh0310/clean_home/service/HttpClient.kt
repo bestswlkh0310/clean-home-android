@@ -71,7 +71,7 @@ object HttpClient {
         }
 
     val retrofit = Retrofit.Builder()
-        .baseUrl(if (!isDebug) "http://clean-home-hhhello0507.koyeb.app/" else "http://172.30.1.85:3000")
+        .baseUrl(if (!isDebug) "http://223.130.136.187:3333/" else "http://172.30.1.85:3000")
         .addConverterFactory(GsonConverterFactory.create(gson))
         .client(okHttpClient)
         .build()

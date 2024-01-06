@@ -47,7 +47,7 @@ fun ItemCeil(
                 text = item.itemName
             )
 
-            Label(text = item.createdAt, color = Color.LightGray)
+            Label(text = "생성일: " + item.createdAt.split('T')[0], color = Color.LightGray)
         }
 
         CHButton(
